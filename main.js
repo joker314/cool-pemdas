@@ -1,3 +1,19 @@
+var pemdas = [
+  {"ltr" : false, "ops" : ["!"]},
+  {"ltr" : false, "ops" : ["^"]}
+  {"ltr" : true,  "ops" : ["*", "/"]},
+  {"ltr" : true,  "ops" : ["+", "-"]}
+]
+
+var operators = {
+  "!" : {"type" : "unary postfix", "run" : function(prev){j=1;for(var i = 1; i < prev; i++){j*=i}return j}},
+  "^" : {"type" : "binary", "run" : Math.pow},
+  "*" : {"type" : "binary", "run" : function(a,b){return a * b}},
+  "/" : {"type" : "binary", "run" : function(a,b){return a / b}},
+  "+" : {"type" : "binary", "run" : function(a,b){return a + b}},
+  "-" : {"type" : "binary", "run" : function(a,b){return a - b}}
+}
+
 var split = function(expr){
   var temp = ""
   var out = []
@@ -32,4 +48,17 @@ var split = function(expr){
     }
   }
   return out
+}
+
+var evaluate = function(expr, element){
+  expr = split(expr)
+  
+  for(var i = 0; i < expr.length; i++){
+    var box = document.createElement("SPAN") 
+    box.className = "box"
+    box.id = "pemdas-visual-box-" + i
+    box.innerText = expr[i].value
+    
+    element.appendChild(box)
+  }
 }
