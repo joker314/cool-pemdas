@@ -1,6 +1,6 @@
 var pemdas = [
   {"ltr" : false, "ops" : ["!"]},
-  {"ltr" : false, "ops" : ["^"]}
+  {"ltr" : false, "ops" : ["^"]},
   {"ltr" : true,  "ops" : ["*", "/"]},
   {"ltr" : true,  "ops" : ["+", "-"]}
 ]
@@ -47,6 +47,7 @@ var split = function(expr){
       }
     }
   }
+  if(temp) out.push({"type" : "number", "value" : temp})
   return out
 }
 
@@ -61,4 +62,7 @@ var evaluate = function(expr, element){
     
     element.appendChild(box)
   }
+  
+  
 }
+evaluate("8+8*8", document.body)
