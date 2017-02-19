@@ -1,0 +1,12 @@
+body{
+  margin: 50px;
+}
+
+.box{
+  margin: 3px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid lightgrey;
+  padding: 20px;
+  font-family: monoheight;
+}
